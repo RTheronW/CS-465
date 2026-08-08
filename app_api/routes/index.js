@@ -3,10 +3,16 @@ const router = express.Router();
 
 const tripsController = require("../controllers/trips");
 
-// deine route for trips endpoint
-router.route('/trips').get(tripsController.tripsList);
+// trips endpoints
+router
+  .route('/trips')
+  .get(tripsController.tripsList)
+  .post(tripsController.tripsAddTrip);   
 
-//GET Method routes tripsFindByCode - requires parameter
-router.route('/trips/:tripCode').get(tripsController.tripsFindByCode);
+// GET Method routes tripsFindByCode - requires parameter
+router
+  .route('/trips/:tripCode')
+  .get(tripsController.tripsFindByCode)
+  .put(tripsController.tripsUpdateTrip);
 
 module.exports = router;
